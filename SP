@@ -1,0 +1,39 @@
+node('master1') 
+{
+    // some block
+    stage('Continouse Download') 
+    {
+        // some block
+        git 'https://github.com/balajimanipi/maven.git'
+    }
+    
+    stage('Continouse Build') 
+    {
+        // some block
+        sh 'mvn package'
+    }
+    
+    stage('Continouse Deploy') 
+    {
+        // some block
+        sh 'scp /var/lib/jenkins/workspace/ScriptedPipeline/webapp/target/webapp.war root@172.31.12.4:/var/lib/tomcat9/webapps/testenv.war'
+        
+    }
+    
+    stage('Continouse Testing') 
+    {
+        // some block
+        
+        git 'https://github.com/balajimanipi/FunctionlTesting.git'
+        sh 'java -jar /var/lib/jenkins/workspace/ScriptedPipeline/testing.jar'
+        
+    }
+    stage('Continouse Delivery') 
+    {
+        // some block
+        input id: 'prodadmin', message: 'Waiting for Approval from the DM'
+        sh 'scp /var/lib/jenkins/workspace/ScriptedPipeline/webapp/target/webapp.war root@172.31.1.226:/var/lib/tomcat9/webapps/prodenv.war'
+        
+    }
+
+}
