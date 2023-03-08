@@ -3,11 +3,11 @@ pipeline
 	agent any
 	stages
 	{
-		stage('ContDownload')
+		stage('Cont Download')
 		{
 			steps
 			{
-			git 'https://github.com/balajimanipi/maven.git'
+				git 'https://github.com/balajimanipi/maven.git'
 			}
 		}
 		
