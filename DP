@@ -1,0 +1,14 @@
+pipeline
+{
+	agent any
+	stages
+	{
+		stage('ContDownload')
+		{
+			steps
+			{
+			git 'https://github.com/balajimanipi/maven.git'
+			}
+		}
+	}
+}
