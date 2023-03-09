@@ -1,6 +1,6 @@
 pipeline
 {
-	agent 'master1'
+	agent { label 'master1' }
 	stages
 	{
 		stage('Cont Download')
