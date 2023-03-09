@@ -39,7 +39,7 @@ pipeline
 	}
 	post
 		{
-			sucess
+			success
 			{
 				input id: 'prodadmin', message: 'Waiting for Approval from the DM'
 				sh 'scp /var/lib/jenkins/workspace/ScriptedPipeline/webapp/target/webapp.war root@172.31.1.226:/var/lib/tomcat9/webapps/prodenv.war'			
