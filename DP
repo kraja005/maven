@@ -36,7 +36,23 @@ pipeline
 			}
 		}
 		
-		stage('ContDelivery')
+		post
+		{
+			sucess
+			{
+				input id: 'prodadmin', message: 'Waiting for Approval from the DM'
+				sh 'scp /var/lib/jenkins/workspace/ScriptedPipeline/webapp/target/webapp.war root@172.31.1.226:/var/lib/tomcat9/webapps/prodenv.war'			
+			}
+			
+			failure
+			{
+				mail bcc: '', body: 'Deployment failed in Production Environment', cc: '', from: '', replyTo: '', subject: 'Build Failed', to: 'balajimanapi@gmai.com'
+			}
+		}
+			
+
+		
+/*		stage('ContDelivery')
 		{
 			steps
 			{
@@ -44,7 +60,7 @@ pipeline
 				sh 'scp /var/lib/jenkins/workspace/ScriptedPipeline/webapp/target/webapp.war root@172.31.1.226:/var/lib/tomcat9/webapps/prodenv.war'
 			}
 		}
-
+*/
 		
 	}
 }
