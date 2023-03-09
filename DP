@@ -47,7 +47,7 @@ pipeline
 			
 			failure
 			{
-				mail bcc: '', body: 'Deployment failed in Production Environment', cc: '', from: '', replyTo: '', subject: 'Build Failed', to: 'balajimanapi@gmai.com'
+				mail bcc: '', body: 'Deployment failed in Production Environment', cc: '', from: '', replyTo: '', subject: 'Build Failed', to: 'mbalajimanapi@gmail.com'
 			}
 		}
 			
